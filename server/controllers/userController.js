@@ -1,5 +1,5 @@
 import userModel from "../models/userModel.js";
-import bcrypt, { genSalt } from 'bcrypt';
+import bcrypt from 'bcryptjs';
 import jwt from 'jsonwebtoken'
 
 const registerUser = async (req,res) => {
@@ -10,8 +10,8 @@ const registerUser = async (req,res) => {
             return res.json({success:false, msg:"Missing Details"})
         }
 
-        const salt = await bcrypt.genSalt(10)
-        const hashedPassword = await bcrypt.hash(password,salt)
+        // const salt = await bcrypt.genSalt(10)
+        const hashedPassword = await bcrypt.hash(password,10)
 
         const userData = {
             name,
