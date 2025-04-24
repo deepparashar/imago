@@ -3,10 +3,14 @@ import { assets, plans } from '../assets/assets'
 import { AppContext } from '../context/AppContext'
 import Mini_Logo from '../assets/mini logo.jpg'
 import { motion } from 'motion/react'
+import { toast } from 'react-toastify'
 const BuyCredit = () => {
 
   const {user} = useContext((AppContext))
-
+  
+  const handleSubmit = () => {
+    toast.info('Payment Method will Integrate Soon!')
+  }
 
   return (
     <motion.div 
@@ -25,7 +29,7 @@ const BuyCredit = () => {
             <p className='text-xl font-semibold mt-3 mb-1'>{item.id}</p>
             <p className='text-sm'>{item.desc}</p>
             <p className='mt-4'> <span className='text-3xl font-medium'>${item.price}</span>/ {item.credits} credits </p>
-            <button className='w-full bg-black text-white mt-8 text-sm rounded-md py-2.5 min-w-52'> {user ? "Purchase" : "Get Started"} </button>
+            <button onClick={handleSubmit} className='w-full bg-black text-white mt-8 text-sm rounded-md py-2.5 min-w-52 cursor-pointer'> {user ? "Purchase" : "Get Started"} </button>
           </div>
         ))}
       </div>
